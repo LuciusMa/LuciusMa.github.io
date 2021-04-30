@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"www.lucius.win","root":"/","images":"/images","scheme":"Gemini","version":"8.3.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"بحث...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}};
+  </script>
+<meta name="description" content="原文Ubuntu防火墙安装和配置">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【转】Ubuntu防火墙安装和配置">
+<meta property="og:url" content="https://www.lucius.win/2017/11/08/ubuntu-ufw/index.html">
+<meta property="og:site_name" content="Lucius的笔记本">
+<meta property="og:description" content="原文Ubuntu防火墙安装和配置">
+<meta property="og:locale">
+<meta property="article:published_time" content="2017-11-08T02:24:14.000Z">
+<meta property="article:modified_time" content="2019-11-27T12:43:19.588Z">
+<meta property="article:author" content="Lucius">
+<meta property="article:tag" content="ubuntu">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://www.lucius.win/2017/11/08/ubuntu-ufw/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-Hans'
+  };
+</script>
+<title>【转】Ubuntu防火墙安装和配置 | Lucius的笔记本</title>
+  
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="تشغيل شريط التصفح" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Lucius的笔记本</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>معلومات</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>الوسوم</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>التصنيفات</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          المحتويات
+        </li>
+        <li class="sidebar-nav-overview">
+          عام
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E5%8E%9F%E6%96%87"><span class="nav-number">1.</span> <span class="nav-text">原文</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Ubuntu%E5%AE%89%E8%A3%85UFW%E9%98%B2%E7%81%AB%E5%A2%99"><span class="nav-number">2.</span> <span class="nav-text">Ubuntu安装UFW防火墙</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%90%AF%E7%94%A8"><span class="nav-number">2.1.</span> <span class="nav-text">启用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BC%80%E5%90%AF-%E7%A6%81%E7%94%A8"><span class="nav-number">2.2.</span> <span class="nav-text">开启&#x2F;禁用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9F%A5%E7%9C%8B%E9%98%B2%E7%81%AB%E5%A2%99%E7%8A%B6%E6%80%81"><span class="nav-number">2.3.</span> <span class="nav-text">查看防火墙状态</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%B3%A8"><span class="nav-number">2.4.</span> <span class="nav-text">[注]</span></a></li></ol></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Lucius</p>
+  <div class="site-description" itemprop="description">过去的点点滴滴塑造了现在的自己</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">113</span>
+          <span class="site-state-item-name">المقالات</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">35</span>
+        <span class="site-state-item-name">التصنيفات</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">28</span>
+        <span class="site-state-item-name">الوسوم</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="https://www.lucius.win/2017/11/08/ubuntu-ufw/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Lucius">
+      <meta itemprop="description" content="过去的点点滴滴塑造了现在的自己">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lucius的笔记本">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          【转】Ubuntu防火墙安装和配置
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">نُشر في</span>
+
+      <time title="أُنشأ: 2017-11-08 10:24:14" itemprop="dateCreated datePublished" datetime="2017-11-08T10:24:14+08:00">2017-11-08</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">عُدل في</span>
+        <time title="عُدل: 2019-11-27 20:43:19" itemprop="dateModified" datetime="2019-11-27T20:43:19+08:00">2019-11-27</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">في</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/ubuntu/" itemprop="url" rel="index"><span itemprop="name">ubuntu</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <h1 id="原文"><a href="#原文" class="headerlink" title="原文"></a>原文</h1><p><a target="_blank" rel="noopener" href="http://www.linuxidc.com/Linux/2016-12/138259.htm">Ubuntu防火墙安装和配置</a></p>
+<span id="more"></span>
+
+<h1 id="Ubuntu安装UFW防火墙"><a href="#Ubuntu安装UFW防火墙" class="headerlink" title="Ubuntu安装UFW防火墙"></a>Ubuntu安装UFW防火墙</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install ufw </span><br></pre></td></tr></table></figure>
+<p>一般用户，只需如下设置：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install ufw </span><br><span class="line">sudo ufw enable </span><br><span class="line">sudo ufw default deny </span><br></pre></td></tr></table></figure>
+<p>以上三条命令已经足够安全了，如果你需要开放某些服务，再使用<code>sudo ufw allow</code>开启。</p>
+<h2 id="启用"><a href="#启用" class="headerlink" title="启用"></a>启用</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">sudo ufw enable </span><br><span class="line">sudo ufw default deny </span><br><span class="line">#运行以上两条命令后，开启了防火墙，并在系统启动时自动开启。 </span><br><span class="line">#关闭所有外部对本机的访问，但本机访问外部正常。 </span><br></pre></td></tr></table></figure>
+<h2 id="开启-禁用"><a href="#开启-禁用" class="headerlink" title="开启/禁用"></a>开启/禁用</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ufw allow|deny [service] </span><br></pre></td></tr></table></figure>
+<p>打开或关闭某个端口，例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">sudo ufw allow smtp　      #允许所有的外部IP访问本机的25&#x2F;tcp (smtp)端口 </span><br><span class="line">sudo ufw allow 22&#x2F;tcp      #允许所有的外部IP访问本机的22&#x2F;tcp (ssh)端口 </span><br><span class="line">sudo ufw allow 53          #允许外部访问53端口(tcp&#x2F;udp) </span><br><span class="line">sudo ufw allow from 192.168.1.100 #允许此IP访问所有的本机端口 </span><br><span class="line">sudo ufw allow proto udp 192.168.0.1 port 53 to 192.168.0.2 port 53 </span><br><span class="line">sudo ufw deny smtp         #禁止外部访问smtp服务 </span><br><span class="line">sudo ufw delete allow smtp #删除上面建立的某条规则 </span><br></pre></td></tr></table></figure>
+<h2 id="查看防火墙状态"><a href="#查看防火墙状态" class="headerlink" title="查看防火墙状态"></a>查看防火墙状态</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo ufw status</span><br></pre></td></tr></table></figure>
+<p>补充：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line">#开启&#x2F;关闭防火墙 (默认设置是’disable’)</span><br><span class="line">ufw enable|disable</span><br><span class="line"></span><br><span class="line">#转换日志状态</span><br><span class="line">ufw logging on|off</span><br><span class="line"></span><br><span class="line">#设置默认策略 (比如 “mostly open” vs “mostly closed”)</span><br><span class="line">ufw default allow|deny</span><br><span class="line"></span><br><span class="line">#许可或者屏蔽某些入埠的包 (可以在“status” 中查看到服务列表［见后文］)</span><br><span class="line">#可以用“协议：端口”的方式指定一个存在于&#x2F;etc&#x2F;services中的服务名称，也可以通过包的meta-data。 ‘allow’ 参数将把条目加入 &#x2F;etc&#x2F;ufw&#x2F;maps ，而 ‘deny’ 则相反。基本语法如下：</span><br><span class="line">ufw allow|deny [service]</span><br><span class="line"></span><br><span class="line">#显示防火墙和端口的侦听状态，参见 &#x2F;var&#x2F;lib&#x2F;ufw&#x2F;maps。括号中的数字将不会被显示出来。</span><br><span class="line">ufw status</span><br><span class="line">UFW使用范例：</span><br><span class="line"></span><br><span class="line">#允许 53 端口</span><br><span class="line">$ sudo ufw allow 53</span><br><span class="line"></span><br><span class="line">#禁用 53 端口</span><br><span class="line">$ sudo ufw delete allow 53</span><br><span class="line"></span><br><span class="line">#允许 80 端口</span><br><span class="line">$ sudo ufw allow 80&#x2F;tcp</span><br><span class="line"></span><br><span class="line">#禁用 80 端口</span><br><span class="line">$ sudo ufw delete allow 80&#x2F;tcp</span><br><span class="line"></span><br><span class="line">#允许 smtp 端口</span><br><span class="line">$ sudo ufw allow smtp</span><br><span class="line"></span><br><span class="line">#删除 smtp 端口的许可</span><br><span class="line">$ sudo ufw delete allow smtp</span><br><span class="line"></span><br><span class="line">#允许某特定 IP</span><br><span class="line">$ sudo ufw allow from 192.168.254.254</span><br><span class="line"></span><br><span class="line">#删除上面的规则</span><br><span class="line">$ sudo ufw delete allow from 192.168.254.254    </span><br></pre></td></tr></table></figure>
+<h2 id="注"><a href="#注" class="headerlink" title="[注]"></a>[注]</h2><p>局域网ping不通mac主机的原因： </p>
+<ol>
+<li>网络连接或网络不稳定 </li>
+<li>mac电脑锁屏或关机 </li>
+<li>防火墙设置 </li>
+<li>ICMP协议设置</li>
+</ol>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>مؤلف المقال:  </strong>Lucius
+  </li>
+  <li class="post-copyright-link">
+      <strong>رابط المقال: </strong>
+      <a href="https://www.lucius.win/2017/11/08/ubuntu-ufw/" title="【转】Ubuntu防火墙安装和配置">https://www.lucius.win/2017/11/08/ubuntu-ufw/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>حقوق الملكية:  </strong>حميع المقالات في هذه المدوّنة منشورة تحت رخصة <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> إلا عند التنويه بخلافه.
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/ubuntu/" rel="tag"># ubuntu</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2017/11/08/git-submodule/" rel="prev" title="git submodule">
+                  <i class="fa fa-chevron-left"></i> git submodule
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2017/11/29/canvas-clean/" rel="next" title="canvas清空画布的一个方法">
+                  canvas清空画布的一个方法 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Lucius</span>
+</div>
+  <div class="powered-by">تطبيق الموقع <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

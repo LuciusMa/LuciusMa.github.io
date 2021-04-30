@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"www.lucius.win","root":"/","images":"/images","scheme":"Gemini","version":"8.3.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"بحث...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}};
+  </script>
+<meta name="description" content="原文链接 让我们来看一下Inoic2应用的工程结构，你会发现，这是一个典型的Cordova项目结构，我们可以安装原生组件，创建针对特定平台的工程文档。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Ionic学习笔记--工程结构">
+<meta property="og:url" content="https://www.lucius.win/2016/11/02/ionic-notes-%E5%B7%A5%E7%A8%8B%E7%BB%93%E6%9E%84/index.html">
+<meta property="og:site_name" content="Lucius的笔记本">
+<meta property="og:description" content="原文链接 让我们来看一下Inoic2应用的工程结构，你会发现，这是一个典型的Cordova项目结构，我们可以安装原生组件，创建针对特定平台的工程文档。">
+<meta property="og:locale">
+<meta property="article:published_time" content="2016-11-02T07:38:00.000Z">
+<meta property="article:modified_time" content="2019-11-27T12:43:19.593Z">
+<meta property="article:author" content="Lucius">
+<meta property="article:tag" content="ionic2">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://www.lucius.win/2016/11/02/ionic-notes-%E5%B7%A5%E7%A8%8B%E7%BB%93%E6%9E%84/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-Hans'
+  };
+</script>
+<title>Ionic学习笔记--工程结构 | Lucius的笔记本</title>
+  
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="تشغيل شريط التصفح" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Lucius的笔记本</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>معلومات</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>الوسوم</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>التصنيفات</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          المحتويات
+        </li>
+        <li class="sidebar-nav-overview">
+          عام
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#src-index-html"><span class="nav-number">1.</span> <span class="nav-text">.&#x2F;src&#x2F;index.html</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#src"><span class="nav-number">2.</span> <span class="nav-text">.&#x2F;src&#x2F;</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#src-app-app-html"><span class="nav-number">3.</span> <span class="nav-text">.&#x2F;src&#x2F;app&#x2F;app.html</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Lucius</p>
+  <div class="site-description" itemprop="description">过去的点点滴滴塑造了现在的自己</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">113</span>
+          <span class="site-state-item-name">المقالات</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">35</span>
+        <span class="site-state-item-name">التصنيفات</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">28</span>
+        <span class="site-state-item-name">الوسوم</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="https://www.lucius.win/2016/11/02/ionic-notes-%E5%B7%A5%E7%A8%8B%E7%BB%93%E6%9E%84/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Lucius">
+      <meta itemprop="description" content="过去的点点滴滴塑造了现在的自己">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lucius的笔记本">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Ionic学习笔记--工程结构
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">نُشر في</span>
+
+      <time title="أُنشأ: 2016-11-02 15:38:00" itemprop="dateCreated datePublished" datetime="2016-11-02T15:38:00+08:00">2016-11-02</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">عُدل في</span>
+        <time title="عُدل: 2019-11-27 20:43:19" itemprop="dateModified" datetime="2019-11-27T20:43:19+08:00">2019-11-27</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">في</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/ionic2/" itemprop="url" rel="index"><span itemprop="name">ionic2</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p><a target="_blank" rel="noopener" href="http://ionicframework.com/docs/v2/getting-started/tutorial/project-structure/">原文链接</a></p>
+<p>让我们来看一下Inoic2应用的工程结构，你会发现，这是一个典型的Cordova项目结构，我们可以安装原生组件，创建针对特定平台的工程文档。</p>
+<span id="more"></span>
+
+<h2 id="src-index-html"><a href="#src-index-html" class="headerlink" title="./src/index.html"></a>./src/index.html</h2><p>** src/index.html ** 是整个应用的主入口文件。它用来设置脚本，导入CSS，引导或启动应用程序。我们不会花太多的时间在这个文件中。</p>
+<p>Ionic会寻找<ion-app>标签，例如：</p>
+<blockquote>
+<p><code>&lt;ion-app&gt;&lt;/ion-app&gt;</code></p>
+</blockquote>
+<p>底部导入js脚本：</p>
+<blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">&lt;script src&#x3D;&quot;cordova.js&quot;&gt;&lt;&#x2F;script&gt;</span><br><span class="line">&lt;script src&#x3D;&quot;build&#x2F;main.js&quot;&gt;&lt;&#x2F;script&gt;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<h2 id="src"><a href="#src" class="headerlink" title="./src/"></a>./src/</h2><p><strong>./src/<strong>文件夹用来存放源代码。大部分开发工作都在这里完成。当我们运行<code>ionic serve</code>命令时，</strong>src</strong>文件夹中的代码将被编译成浏览器能够识别的js代码（当前为ES5）。这意味着我们可以使用TypeScript的高级特性，运行时会编译成浏览器需要的老版本的js代码。</p>
+<p><strong>src/app/app.module.ts</strong>是我们的程序的主入口。</p>
+<p>在文件的顶部,我们可以看到:</p>
+<blockquote>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">@NgModule(&#123;</span><br><span class="line"> declarations: [MyApp,HelloIonicPage, ItemDetailsPage, ListPage],</span><br><span class="line"> imports: [IonicModule.forRoot(MyApp)],</span><br><span class="line"> bootstrap: [IonicApp],</span><br><span class="line"> entryComponents: [MyApp,HelloIonicPage,ItemDetailsPage,ListPage],</span><br><span class="line"> providers: []</span><br><span class="line">&#125;)</span><br><span class="line">export class AppModule &#123;&#125;</span><br></pre></td></tr></table></figure>
+</blockquote>
+<p>每个应用都有一个<strong>根模块</strong>来控制应用的其它部分。类似于Ionic和Angular1中的ng-app。这（根模块）也是我们使用 <code>ionicBootstrap</code> 引导我们应用的地方。</p>
+<p>在文件 <code>src/app/app.component.ts</code> 中，我们设置根组件MyApp。<br>这是我们的应用加载的第一个组件，它通常是一个用来加载其它组件的空客。<br>在<code>app.component.ts</code>中，我们设置了模板 <code>src/app/app.html</code> ，现在来看看这个模板。  </p>
+<h2 id="src-app-app-html"><a href="#src-app-app-html" class="headerlink" title="./src/app/app.html"></a>./src/app/app.html</h2><p><code>src/app/app.html</code>是应用的主模板：</p>
+<pre><code>&lt;ion-menu [content]=&quot;content&quot;&gt;
+
+  &lt;ion-header&gt;
+    &lt;ion-toolbar&gt;
+      &lt;ion-title&gt;Pages&lt;/ion-title&gt;
+    &lt;/ion-toolbar&gt;
+  &lt;/ion-header&gt;
+  
+  &lt;ion-content&gt;
+    &lt;ion-list&gt;
+      &lt;button ion-item *ngFor=&quot;let p of pages&quot; (click)=&quot;openPage(p)&quot;&gt;
+        &#123;&#123;p.title&#125;&#125;
+      &lt;/button&gt;
+    &lt;/ion-list&gt;
+  &lt;/ion-content&gt;
+
+&lt;/ion-menu&gt;
+
+&lt;ion-nav id=&quot;nav&quot; [root]=&quot;rootPage&quot; #content swipeBackEnabled=&quot;false&quot;&gt;&lt;/ion-nav&gt;
+</code></pre>
+<p>在这个模板中，我们使用ion-menu组件来生成一个侧滑菜单，使用ion-nav组件充当主要内容区域。ion-menu的[content]属性绑定到我们的ion-nav的局部变量<code>&#39;content&#39;</code>，以确定菜单应该在哪里展示动画效果。</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>مؤلف المقال:  </strong>Lucius
+  </li>
+  <li class="post-copyright-link">
+      <strong>رابط المقال: </strong>
+      <a href="https://www.lucius.win/2016/11/02/ionic-notes-%E5%B7%A5%E7%A8%8B%E7%BB%93%E6%9E%84/" title="Ionic学习笔记--工程结构">https://www.lucius.win/2016/11/02/ionic-notes-工程结构/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>حقوق الملكية:  </strong>حميع المقالات في هذه المدوّنة منشورة تحت رخصة <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> إلا عند التنويه بخلافه.
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/ionic2/" rel="tag"># ionic2</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2016/11/02/ionic-notes-%E6%96%B0%E6%89%8B%E4%B8%8A%E8%B7%AF/" rel="prev" title="Ionic学习笔记--新手上路">
+                  <i class="fa fa-chevron-left"></i> Ionic学习笔记--新手上路
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2016/11/03/ionic-notes-%E5%A2%9E%E5%8A%A0%E9%A1%B5%E9%9D%A2/" rel="next" title="Ionic学习笔记--增加页面">
+                  Ionic学习笔记--增加页面 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Lucius</span>
+</div>
+  <div class="powered-by">تطبيق الموقع <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

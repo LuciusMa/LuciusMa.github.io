@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"www.lucius.win","root":"/","images":"/images","scheme":"Gemini","version":"8.3.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"بحث...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}};
+  </script>
+<meta name="description" content="React 教程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="react学习">
+<meta property="og:url" content="https://www.lucius.win/2017/05/09/react%E5%AD%A6%E4%B9%A0/index.html">
+<meta property="og:site_name" content="Lucius的笔记本">
+<meta property="og:description" content="React 教程">
+<meta property="og:locale">
+<meta property="article:published_time" content="2017-05-09T06:09:53.000Z">
+<meta property="article:modified_time" content="2019-11-27T12:43:19.592Z">
+<meta property="article:author" content="Lucius">
+<meta property="article:tag" content="react">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://www.lucius.win/2017/05/09/react%E5%AD%A6%E4%B9%A0/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-Hans'
+  };
+</script>
+<title>react学习 | Lucius的笔记本</title>
+  
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="تشغيل شريط التصفح" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Lucius的笔记本</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>معلومات</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>الوسوم</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>التصنيفات</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-nav-active sidebar-toc-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          المحتويات
+        </li>
+        <li class="sidebar-nav-overview">
+          عام
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+            <div class="post-toc animated"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-create-react-app-%E5%BF%AB%E9%80%9F%E6%9E%84%E5%BB%BA-React-%E5%BC%80%E5%8F%91%E7%8E%AF%E5%A2%83"><span class="nav-number">1.</span> <span class="nav-text">使用 create-react-app 快速构建 React 开发环境</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#React-JSX"><span class="nav-number">2.</span> <span class="nav-text">React JSX</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#React-%E7%BB%84%E4%BB%B6"><span class="nav-number">3.</span> <span class="nav-text">React 组件</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%A4%8D%E5%90%88%E7%BB%84%E4%BB%B6"><span class="nav-number">3.1.</span> <span class="nav-text">复合组件</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#React-State-%E7%8A%B6%E6%80%81"><span class="nav-number">4.</span> <span class="nav-text">React State(状态)</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#React-Props"><span class="nav-number">5.</span> <span class="nav-text">React Props</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#State-%E5%92%8C-Props"><span class="nav-number">5.1.</span> <span class="nav-text">State 和 Props</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#Props-%E9%AA%8C%E8%AF%81"><span class="nav-number">5.2.</span> <span class="nav-text">Props 验证</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#React-%E7%BB%84%E4%BB%B6-API"><span class="nav-number">6.</span> <span class="nav-text">React 组件 API</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AE%BE%E7%BD%AE%E7%8A%B6%E6%80%81-setState"><span class="nav-number">6.1.</span> <span class="nav-text">设置状态:setState</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%88%A4%E6%96%AD%E7%BB%84%E4%BB%B6%E6%8C%82%E8%BD%BD%E7%8A%B6%E6%80%81%EF%BC%9AisMounted"><span class="nav-number">6.2.</span> <span class="nav-text">判断组件挂载状态：isMounted</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#React-%E7%BB%84%E4%BB%B6%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F"><span class="nav-number">7.</span> <span class="nav-text">React 组件生命周期</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#componentWillMount"><span class="nav-number">7.1.</span> <span class="nav-text">componentWillMount</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#componentDidMount"><span class="nav-number">7.2.</span> <span class="nav-text">componentDidMount</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#componentWillReceiveProps"><span class="nav-number">7.3.</span> <span class="nav-text">componentWillReceiveProps</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#shouldComponentUpdate"><span class="nav-number">7.4.</span> <span class="nav-text">shouldComponentUpdate</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#componentWillUpdate"><span class="nav-number">7.5.</span> <span class="nav-text">componentWillUpdate</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#componentDidUpdate"><span class="nav-number">7.6.</span> <span class="nav-text">componentDidUpdate</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#componentWillUnmount"><span class="nav-number">7.7.</span> <span class="nav-text">componentWillUnmount</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#React-AJAX"><span class="nav-number">8.</span> <span class="nav-text">React AJAX</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#React-Refs"><span class="nav-number">9.</span> <span class="nav-text">React Refs</span></a></li></ol></div>
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Lucius</p>
+  <div class="site-description" itemprop="description">过去的点点滴滴塑造了现在的自己</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">113</span>
+          <span class="site-state-item-name">المقالات</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">35</span>
+        <span class="site-state-item-name">التصنيفات</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">28</span>
+        <span class="site-state-item-name">الوسوم</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="https://www.lucius.win/2017/05/09/react%E5%AD%A6%E4%B9%A0/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Lucius">
+      <meta itemprop="description" content="过去的点点滴滴塑造了现在的自己">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lucius的笔记本">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          react学习
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">نُشر في</span>
+
+      <time title="أُنشأ: 2017-05-09 14:09:53" itemprop="dateCreated datePublished" datetime="2017-05-09T14:09:53+08:00">2017-05-09</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">عُدل في</span>
+        <time title="عُدل: 2019-11-27 20:43:19" itemprop="dateModified" datetime="2019-11-27T20:43:19+08:00">2019-11-27</time>
+      </span>
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-folder"></i>
+      </span>
+      <span class="post-meta-item-text">في</span>
+        <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+          <a href="/categories/react/" itemprop="url" rel="index"><span itemprop="name">react</span></a>
+        </span>
+    </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p><a target="_blank" rel="noopener" href="http://www.runoob.com/react/react-tutorial.html">React 教程</a></p>
+<span id="more"></span>
+<ul>
+<li>react.min.js - React 的核心库</li>
+<li>react-dom.min.js - 提供与 DOM 相关的功能</li>
+<li>babel.min.js - Babel 可以将 ES6 代码转为 ES5 代码，这样我们就能在目前不支持 ES6 浏览器上执行 React 代码。Babel 内嵌了对 JSX 的支持。通过将 Babel 和 babel-sublime 包（package）一同使用可以让源码的语法渲染上升到一个全新的水平。<blockquote>
+<p><strong>注意：</strong><br>如果我们需要使用 JSX，则 <code>&lt;script&gt;</code> 标签的 type 属性需要设置为 text/babel。</p>
+</blockquote>
+</li>
+</ul>
+<p>我们建议在 React 中使用 CommonJS 模块系统，比如 browserify 或 webpack，本教程使用 webpack。</p>
+<h1 id="使用-create-react-app-快速构建-React-开发环境"><a href="#使用-create-react-app-快速构建-React-开发环境" class="headerlink" title="使用 create-react-app 快速构建 React 开发环境"></a>使用 create-react-app 快速构建 React 开发环境</h1><p>create-react-app 自动创建的项目是基于 Webpack + ES6 。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">cnpm install -g create-react-app</span><br><span class="line">create-react-app my-app</span><br><span class="line">cd my-app&#x2F;</span><br><span class="line">npm start</span><br></pre></td></tr></table></figure>
+<p>create-react-app 执行慢的解决方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">-- npm换成淘宝的资源</span><br><span class="line">npm config set registry https:&#x2F;&#x2F;registry.npm.taobao.org</span><br><span class="line">-- 配置后可通过下面方式来验证是否成功</span><br><span class="line">npm config get registry</span><br><span class="line">-- 或 npm info express</span><br></pre></td></tr></table></figure>
+
+<h1 id="React-JSX"><a href="#React-JSX" class="headerlink" title="React JSX"></a>React JSX</h1><p>它有以下优点：</p>
+<ul>
+<li>JSX 执行更快，因为它在编译为 JavaScript 代码后进行了优化。</li>
+<li>它是类型安全的，在编译过程中就能发现错误。</li>
+<li>使用 JSX 编写模板更加简单快速。</li>
+</ul>
+<p>我们可以在 JSX 中使用 JavaScript 表达式。表达式写在花括号 {} 中。<br>注释需要写在花括号中。<br>在 JSX 中不能使用 if else 语句，但可以使用 conditional (三元运算) 表达式来替代。<br>React 推荐使用内联样式。<br>JSX 允许在模板中插入数组，数组会自动展开所有成员。（仅一层，不支持嵌套）</p>
+<p><strong>React 的 JSX 使用大、小写的约定来区分本地组件的类和 HTML 标签。</strong></p>
+<blockquote>
+<p>注意:<br>由于 JSX 就是 JavaScript，一些标识符像 class 和 for 不建议作为 XML 属性名。作为替代，React DOM 使用 className 和 htmlFor 来做对应的属性。</p>
+</blockquote>
+<h1 id="React-组件"><a href="#React-组件" class="headerlink" title="React 组件"></a>React 组件</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">var HelloMessage &#x3D; React.createClass(&#123;</span><br><span class="line">  render: function() &#123;</span><br><span class="line">    return &lt;h1&gt;Hello World！&lt;&#x2F;h1&gt;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">ReactDOM.render(</span><br><span class="line">  &lt;HelloMessage &#x2F;&gt;,</span><br><span class="line">  document.getElementById(&#39;example&#39;)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>注意，原生 HTML 元素名以小写字母开头，而自定义的 React 类名<strong>以大写字母开头</strong>，比如 HelloMessage 不能写成 helloMessage。除此之外还需要注意组件类只能包含<strong>一个顶层标签</strong>，否则也会报错。</p>
+</blockquote>
+<p>向组件传递参数使用 this.props 对象</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">var HelloMessage &#x3D; React.createClass(&#123;</span><br><span class="line">  render: function() &#123;</span><br><span class="line">    return &lt;h1&gt;Hello &#123;this.props.name&#125;&lt;&#x2F;h1&gt;;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">ReactDOM.render(</span><br><span class="line">  &lt;HelloMessage name&#x3D;&quot;Runoob&quot; &#x2F;&gt;,</span><br><span class="line">  document.getElementById(&#39;example&#39;)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<blockquote>
+<p>注意，在添加属性时， class 属性需要写成 className ，for 属性需要写成 htmlFor ，这是因为 class 和 for 是 JavaScript 的保留字。</p>
+</blockquote>
+<h2 id="复合组件"><a href="#复合组件" class="headerlink" title="复合组件"></a>复合组件</h2><h1 id="React-State-状态"><a href="#React-State-状态" class="headerlink" title="React State(状态)"></a>React State(状态)</h1><p>getInitialState 方法用于定义初始状态，也就是一个对象，这个对象可以通过 this.state 属性读取</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">var LikeButton &#x3D; React.createClass(&#123;</span><br><span class="line">    getInitialState: function() &#123;</span><br><span class="line">        return &#123;liked: false&#125;;</span><br><span class="line">    &#125;,</span><br><span class="line">    handleClick: function(event) &#123;</span><br><span class="line">        this.setState(&#123;liked: !this.state.liked&#125;);</span><br><span class="line">    &#125;,</span><br><span class="line">    render: function() &#123;</span><br><span class="line">        var text &#x3D; this.state.liked ? &#39;喜欢&#39; : &#39;不喜欢&#39;;</span><br><span class="line">        return (</span><br><span class="line">        &lt;p onClick&#x3D;&#123;this.handleClick&#125;&gt;</span><br><span class="line">            你&lt;b&gt;&#123;text&#125;&lt;&#x2F;b&gt;我。点我切换状态。</span><br><span class="line">        &lt;&#x2F;p&gt;</span><br><span class="line">        );</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">ReactDOM.render(</span><br><span class="line">    &lt;LikeButton &#x2F;&gt;,</span><br><span class="line">    document.getElementById(&#39;example&#39;)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<h1 id="React-Props"><a href="#React-Props" class="headerlink" title="React Props"></a>React Props</h1><p>state 和 props 主要的区别在于 props 是不可变的，而 state 可以根据与用户交互来改变。这就是为什么有些容器组件需要定义 state 来更新和修改数据。 而子组件只能通过 props 来传递数据。<br>通过 getDefaultProps() 方法为 props 设置默认值。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">var HelloMessage &#x3D; React.createClass(&#123;</span><br><span class="line">    getDefaultProps: function() &#123;</span><br><span class="line">        return &#123;</span><br><span class="line">            name: &#39;Runoob&#39;</span><br><span class="line">        &#125;;</span><br><span class="line">    &#125;,</span><br><span class="line">    render: function() &#123;</span><br><span class="line">        return &lt;h1&gt;Hello &#123;this.props.name&#125;&lt;&#x2F;h1&gt;;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">ReactDOM.render(</span><br><span class="line">    &lt;HelloMessage name&#x3D;&#39;Job&#39;&#x2F;&gt;,</span><br><span class="line">    document.getElementById(&#39;example&#39;)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<h2 id="State-和-Props"><a href="#State-和-Props" class="headerlink" title="State 和 Props"></a>State 和 Props</h2><p>以下实例演示了如何在应用中组合使用 state 和 props 。我们可以在父组件中设置 state， 并通过在子组件上使用 props 将其传递到子组件上。在 render 函数中, 我们设置 name 和 site 来获取父组件传递过来的数据。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br></pre></td><td class="code"><pre><span class="line">var WebSite &#x3D; React.createClass(&#123;</span><br><span class="line">  getInitialState: function() &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">      name: &quot;菜鸟教程&quot;,</span><br><span class="line">      site: &quot;http:&#x2F;&#x2F;www.runoob.com&quot;</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;,</span><br><span class="line">  cl: function()&#123;</span><br><span class="line">    this.setState(&#123;name:&quot;L&quot;,site:&quot;www.baidu.com&quot;&#125;);</span><br><span class="line">  &#125;,</span><br><span class="line">  render: function() &#123;</span><br><span class="line">    return (</span><br><span class="line">      &lt;div&gt;</span><br><span class="line">        &lt;button onClick&#x3D;&#123;this.cl&#125;&gt;click&lt;&#x2F;button&gt;</span><br><span class="line">        &lt;Name name&#x3D;&#123;this.state.name&#125; &#x2F;&gt;</span><br><span class="line">        &lt;Link site&#x3D;&#123;this.state.site&#125; &#x2F;&gt;</span><br><span class="line">      &lt;&#x2F;div&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">var Name &#x3D; React.createClass(&#123;</span><br><span class="line">  render: function() &#123;</span><br><span class="line">    return (</span><br><span class="line">      &lt;h1&gt;&#123;this.props.name&#125;&lt;&#x2F;h1&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">var Link &#x3D; React.createClass(&#123;</span><br><span class="line">  render: function() &#123;</span><br><span class="line">    return (</span><br><span class="line">      &lt;a href&#x3D;&#123;this.props.site&#125;&gt;</span><br><span class="line">        &#123;this.props.site&#125;</span><br><span class="line">      &lt;&#x2F;a&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">ReactDOM.render(</span><br><span class="line">  &lt;WebSite &#x2F;&gt;,</span><br><span class="line">  document.getElementById(&#39;example&#39;)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<h2 id="Props-验证"><a href="#Props-验证" class="headerlink" title="Props 验证"></a>Props 验证</h2><p>Props 验证使用 propTypes</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">var title &#x3D; &quot;菜鸟教程&quot;;</span><br><span class="line">&#x2F;&#x2F; var title &#x3D; 123;</span><br><span class="line">var MyTitle &#x3D; React.createClass(&#123;</span><br><span class="line">  propTypes: &#123;</span><br><span class="line">    title: React.PropTypes.string.isRequired,</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  render: function() &#123;</span><br><span class="line">     return &lt;h1&gt; &#123;this.props.title&#125; &lt;&#x2F;h1&gt;;</span><br><span class="line">   &#125;</span><br><span class="line">&#125;);</span><br><span class="line">ReactDOM.render(</span><br><span class="line">    &lt;MyTitle title&#x3D;&#123;title&#125; &#x2F;&gt;,</span><br><span class="line">    document.getElementById(&#39;example&#39;)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+<p><strong>更多验证器说明如下</strong></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br></pre></td><td class="code"><pre><span class="line">React.createClass(&#123;</span><br><span class="line">  propTypes: &#123;</span><br><span class="line">    &#x2F;&#x2F; 可以声明 prop 为指定的 JS 基本数据类型，默认情况，这些数据是可选的</span><br><span class="line">   optionalArray: React.PropTypes.array,</span><br><span class="line">    optionalBool: React.PropTypes.bool,</span><br><span class="line">    optionalFunc: React.PropTypes.func,</span><br><span class="line">    optionalNumber: React.PropTypes.number,</span><br><span class="line">    optionalObject: React.PropTypes.object,</span><br><span class="line">    optionalString: React.PropTypes.string,</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; 可以被渲染的对象 numbers, strings, elements 或 array</span><br><span class="line">    optionalNode: React.PropTypes.node,</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F;  React 元素</span><br><span class="line">    optionalElement: React.PropTypes.element,</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; 用 JS 的 instanceof 操作符声明 prop 为类的实例。</span><br><span class="line">    optionalMessage: React.PropTypes.instanceOf(Message),</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; 用 enum 来限制 prop 只接受指定的值。</span><br><span class="line">    optionalEnum: React.PropTypes.oneOf([&#39;News&#39;, &#39;Photos&#39;]),</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; 可以是多个对象类型中的一个</span><br><span class="line">    optionalUnion: React.PropTypes.oneOfType([</span><br><span class="line">      React.PropTypes.string,</span><br><span class="line">      React.PropTypes.number,</span><br><span class="line">      React.PropTypes.instanceOf(Message)</span><br><span class="line">    ]),</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; 指定类型组成的数组</span><br><span class="line">    optionalArrayOf: React.PropTypes.arrayOf(React.PropTypes.number),</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; 指定类型的属性构成的对象</span><br><span class="line">    optionalObjectOf: React.PropTypes.objectOf(React.PropTypes.number),</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; 特定 shape 参数的对象</span><br><span class="line">    optionalObjectWithShape: React.PropTypes.shape(&#123;</span><br><span class="line">      color: React.PropTypes.string,</span><br><span class="line">      fontSize: React.PropTypes.number</span><br><span class="line">    &#125;),</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; 任意类型加上 &#96;isRequired&#96; 来使 prop 不可空。</span><br><span class="line">    requiredFunc: React.PropTypes.func.isRequired,</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; 不可空的任意类型</span><br><span class="line">    requiredAny: React.PropTypes.any.isRequired,</span><br><span class="line"></span><br><span class="line">    &#x2F;&#x2F; 自定义验证器。如果验证失败需要返回一个 Error 对象。不要直接使用 &#96;console.warn&#96; 或抛异常，因为这样 &#96;oneOfType&#96; 会失效。</span><br><span class="line">    customProp: function(props, propName, componentName) &#123;</span><br><span class="line">      if (!&#x2F;matchme&#x2F;.test(props[propName])) &#123;</span><br><span class="line">        return new Error(&#39;Validation failed!&#39;);</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;,</span><br><span class="line">  &#x2F;* ... *&#x2F;</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h1 id="React-组件-API"><a href="#React-组件-API" class="headerlink" title="React 组件 API"></a>React 组件 API</h1><ul>
+<li>设置状态：setState</li>
+<li>替换状态：replaceState</li>
+<li>设置属性：setProps</li>
+<li>替换属性：replaceProps</li>
+<li>强制更新：forceUpdate</li>
+<li>获取DOM节点：findDOMNode</li>
+<li>判断组件挂载状态：isMounted</li>
+</ul>
+<h2 id="设置状态-setState"><a href="#设置状态-setState" class="headerlink" title="设置状态:setState"></a>设置状态:setState</h2><p>setState()并不会立即改变this.state，而是创建一个即将处理的state。setState()并不一定是同步的，为了提升性能React会批量执行state和DOM渲染。<br>setState()总是会触发一次组件重绘，除非在shouldComponentUpdate()中实现了一些条件渲染逻辑。</p>
+<h2 id="判断组件挂载状态：isMounted"><a href="#判断组件挂载状态：isMounted" class="headerlink" title="判断组件挂载状态：isMounted"></a>判断组件挂载状态：isMounted</h2><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bool isMounted() &#x2F;&#x2F;返回值：true或false，表示组件是否已挂载到DOM中</span><br></pre></td></tr></table></figure>
+<p>isMounted()方法用于判断组件是否已挂载到DOM中。可以使用该方法保证了setState()和forceUpdate()在异步场景下的调用不会出错。</p>
+<h1 id="React-组件生命周期"><a href="#React-组件生命周期" class="headerlink" title="React 组件生命周期"></a>React 组件生命周期</h1><p>组件的生命周期可分成三个状态：</p>
+<ul>
+<li>Mounting：已插入真实 DOM</li>
+<li>Updating：正在被重新渲染</li>
+<li>Unmounting：已移出真实 DOM</li>
+</ul>
+<h2 id="componentWillMount"><a href="#componentWillMount" class="headerlink" title="componentWillMount"></a>componentWillMount</h2><p>在渲染前调用,在客户端也在服务端。</p>
+<h2 id="componentDidMount"><a href="#componentDidMount" class="headerlink" title="componentDidMount"></a>componentDidMount</h2><p>在第一次渲染后调用，只在客户端。之后组件已经生成了对应的DOM结构，可以通过this.getDOMNode()来进行访问。 如果你想和其他JavaScript框架一起使用，可以在这个方法中调用setTimeout, setInterval或者发送AJAX请求等操作(防止异部操作阻塞UI)。</p>
+<h2 id="componentWillReceiveProps"><a href="#componentWillReceiveProps" class="headerlink" title="componentWillReceiveProps"></a>componentWillReceiveProps</h2><p>在组件接收到一个新的prop时被调用。这个方法在初始化render时不会被调用。</p>
+<h2 id="shouldComponentUpdate"><a href="#shouldComponentUpdate" class="headerlink" title="shouldComponentUpdate"></a>shouldComponentUpdate</h2><p>返回一个布尔值。在组件接收到新的props或者state时被调用。在初始化时或者使用forceUpdate时不被调用。<br>可以在你确认不需要更新组件时使用。</p>
+<h2 id="componentWillUpdate"><a href="#componentWillUpdate" class="headerlink" title="componentWillUpdate"></a>componentWillUpdate</h2><p>在组件接收到新的props或者state但还没有render时被调用。在初始化时不会被调用。</p>
+<h2 id="componentDidUpdate"><a href="#componentDidUpdate" class="headerlink" title="componentDidUpdate"></a>componentDidUpdate</h2><p>在组件完成更新后立即调用。在初始化时不会被调用。</p>
+<h2 id="componentWillUnmount"><a href="#componentWillUnmount" class="headerlink" title="componentWillUnmount"></a>componentWillUnmount</h2><p>在组件从 DOM 中移除的时候立刻被调用。</p>
+<h1 id="React-AJAX"><a href="#React-AJAX" class="headerlink" title="React AJAX"></a>React AJAX</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">var UserGist &#x3D; React.createClass(&#123;</span><br><span class="line">  getInitialState: function() &#123;</span><br><span class="line">    return &#123;</span><br><span class="line">      username: &#39;&#39;,</span><br><span class="line">      lastGistUrl: &#39;&#39;</span><br><span class="line">    &#125;;</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  componentDidMount: function() &#123;</span><br><span class="line">    this.serverRequest &#x3D; $.get(this.props.source, function (result) &#123;</span><br><span class="line">      var lastGist &#x3D; result[0];</span><br><span class="line">      this.setState(&#123;</span><br><span class="line">        username: lastGist.owner.login,</span><br><span class="line">        lastGistUrl: lastGist.html_url</span><br><span class="line">      &#125;);</span><br><span class="line">    &#125;.bind(this));</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  componentWillUnmount: function() &#123;</span><br><span class="line">    this.serverRequest.abort();</span><br><span class="line">  &#125;,</span><br><span class="line"></span><br><span class="line">  render: function() &#123;</span><br><span class="line">    return (</span><br><span class="line">      &lt;div&gt;</span><br><span class="line">        &#123;this.state.username&#125; 用户最新的 Gist 共享地址：</span><br><span class="line">        &lt;a href&#x3D;&#123;this.state.lastGistUrl&#125;&gt;&#123;this.state.lastGistUrl&#125;&lt;&#x2F;a&gt;</span><br><span class="line">      &lt;&#x2F;div&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">ReactDOM.render(</span><br><span class="line">  &lt;UserGist source&#x3D;&quot;https:&#x2F;&#x2F;api.github.com&#x2F;users&#x2F;octocat&#x2F;gists&quot; &#x2F;&gt;,</span><br><span class="line">  mountNode</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+<h1 id="React-Refs"><a href="#React-Refs" class="headerlink" title="React Refs"></a>React Refs</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">var MyComponent &#x3D; React.createClass(&#123;</span><br><span class="line">  handleClick: function() &#123;</span><br><span class="line">    &#x2F;&#x2F; 使用原生的 DOM API 获取焦点</span><br><span class="line">    this.refs.myInput.focus();</span><br><span class="line">  &#125;,</span><br><span class="line">  render: function() &#123;</span><br><span class="line">    &#x2F;&#x2F;  当组件插入到 DOM 后，ref 属性添加一个组件的引用于到 this.refs</span><br><span class="line">    return (</span><br><span class="line">      &lt;div&gt;</span><br><span class="line">        &lt;input type&#x3D;&quot;text&quot; ref&#x3D;&quot;myInput&quot; &#x2F;&gt;</span><br><span class="line">        &lt;input</span><br><span class="line">          type&#x3D;&quot;button&quot;</span><br><span class="line">          value&#x3D;&quot;点我输入框获取焦点&quot;</span><br><span class="line">          onClick&#x3D;&#123;this.handleClick&#125;</span><br><span class="line">        &#x2F;&gt;</span><br><span class="line">      &lt;&#x2F;div&gt;</span><br><span class="line">    );</span><br><span class="line">  &#125;</span><br><span class="line">&#125;);</span><br><span class="line"></span><br><span class="line">ReactDOM.render(</span><br><span class="line">  &lt;MyComponent &#x2F;&gt;,</span><br><span class="line">  document.getElementById(&#39;example&#39;)</span><br><span class="line">);</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>مؤلف المقال:  </strong>Lucius
+  </li>
+  <li class="post-copyright-link">
+      <strong>رابط المقال: </strong>
+      <a href="https://www.lucius.win/2017/05/09/react%E5%AD%A6%E4%B9%A0/" title="react学习">https://www.lucius.win/2017/05/09/react学习/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>حقوق الملكية:  </strong>حميع المقالات في هذه المدوّنة منشورة تحت رخصة <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> إلا عند التنويه بخلافه.
+  </li>
+</ul>
+</div>
+
+          <div class="post-tags">
+              <a href="/tags/react/" rel="tag"># react</a>
+          </div>
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2017/05/09/git-%E5%BF%BD%E7%95%A5%E5%B7%B2%E7%BB%8F%E8%B7%9F%E8%B8%AA%E7%9A%84%E6%96%87%E4%BB%B6/" rel="prev" title="Git忽略已经跟踪的文件">
+                  <i class="fa fa-chevron-left"></i> Git忽略已经跟踪的文件
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2017/05/09/docker-base-command/" rel="next" title="Docker基础命令">
+                  Docker基础命令 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Lucius</span>
+</div>
+  <div class="powered-by">تطبيق الموقع <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>

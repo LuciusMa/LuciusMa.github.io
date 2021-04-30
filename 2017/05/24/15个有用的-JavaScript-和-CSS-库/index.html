@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="zh-Hans">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+
+
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.ico">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/all.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/animate.css@3.1.1/animate.min.css">
+
+<script class="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"www.lucius.win","root":"/","images":"/images","scheme":"Gemini","version":"8.3.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12},"copycode":false,"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"fadeInDown","post_body":"fadeInDown","coll_header":"fadeInLeft","sidebar":"fadeInUp"}},"prism":false,"i18n":{"placeholder":"بحث...","empty":"We didn't find any results for the search: ${query}","hits_time":"${hits} results found in ${time} ms","hits":"${hits} results found"}};
+  </script>
+<meta name="description" content="原文：15 个有用的 JavaScript 和 CSS 库">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【转】15 个有用的 JavaScript 和 CSS 库">
+<meta property="og:url" content="https://www.lucius.win/2017/05/24/15%E4%B8%AA%E6%9C%89%E7%94%A8%E7%9A%84-JavaScript-%E5%92%8C-CSS-%E5%BA%93/index.html">
+<meta property="og:site_name" content="Lucius的笔记本">
+<meta property="og:description" content="原文：15 个有用的 JavaScript 和 CSS 库">
+<meta property="og:locale">
+<meta property="article:published_time" content="2017-05-24T08:08:28.000Z">
+<meta property="article:modified_time" content="2019-12-04T13:30:24.227Z">
+<meta property="article:author" content="Lucius">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="canonical" href="https://www.lucius.win/2017/05/24/15%E4%B8%AA%E6%9C%89%E7%94%A8%E7%9A%84-JavaScript-%E5%92%8C-CSS-%E5%BA%93/">
+
+
+<script class="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-Hans'
+  };
+</script>
+<title>【转】15 个有用的 JavaScript 和 CSS 库 | Lucius的笔记本</title>
+  
+
+
+
+
+  <noscript>
+  <style>
+  body { margin-top: 2rem; }
+
+  .use-motion .menu-item,
+  .use-motion .sidebar,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header {
+    visibility: visible;
+  }
+
+  .use-motion .header,
+  .use-motion .site-brand-container .toggle,
+  .use-motion .footer { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle,
+  .use-motion .custom-logo-image {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line {
+    transform: scaleX(1);
+  }
+
+  .search-pop-overlay, .sidebar-nav { display: none; }
+  .sidebar-panel { display: block; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" class="use-motion">
+  <div class="headband"></div>
+
+  <main class="main">
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="تشغيل شريط التصفح" role="button">
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+        <span class="toggle-line"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <i class="logo-line"></i>
+      <h1 class="site-title">Lucius的笔记本</h1>
+      <i class="logo-line"></i>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+<nav class="site-nav">
+  <ul class="main-menu menu">
+        <li class="menu-item menu-item-home"><a href="/" rel="section"><i class="fa fa-home fa-fw"></i>Home</a></li>
+        <li class="menu-item menu-item-about"><a href="/about/" rel="section"><i class="fa fa-user fa-fw"></i>معلومات</a></li>
+        <li class="menu-item menu-item-tags"><a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>الوسوم</a></li>
+        <li class="menu-item menu-item-categories"><a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>التصنيفات</a></li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+        
+  
+  <div class="toggle sidebar-toggle" role="button">
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+    <span class="toggle-line"></span>
+  </div>
+
+  <aside class="sidebar">
+
+    <div class="sidebar-inner sidebar-overview-active">
+      <ul class="sidebar-nav">
+        <li class="sidebar-nav-toc">
+          المحتويات
+        </li>
+        <li class="sidebar-nav-overview">
+          عام
+        </li>
+      </ul>
+
+      <div class="sidebar-panel-container">
+        <!--noindex-->
+        <div class="post-toc-wrap sidebar-panel">
+        </div>
+        <!--/noindex-->
+
+        <div class="site-overview-wrap sidebar-panel">
+          <div class="site-author site-overview-item animated" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Lucius</p>
+  <div class="site-description" itemprop="description">过去的点点滴滴塑造了现在的自己</div>
+</div>
+<div class="site-state-wrap site-overview-item animated">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives">
+          <span class="site-state-item-count">113</span>
+          <span class="site-state-item-name">المقالات</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">35</span>
+        <span class="site-state-item-name">التصنيفات</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">28</span>
+        <span class="site-state-item-name">الوسوم</span></a>
+      </div>
+  </nav>
+</div>
+  <div class="cc-license site-overview-item animated" itemprop="license">
+    <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" class="cc-opacity" rel="noopener" target="_blank"><img src="/images/cc-by-nc-sa.svg" alt="Creative Commons"></a>
+  </div>
+
+
+
+        </div>
+      </div>
+    </div>
+  </aside>
+  <div class="sidebar-dimmer"></div>
+
+
+    </header>
+
+    
+  <div class="back-to-top" role="button" aria-label="Back to top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+<noscript>
+  <div class="noscript-warning">Theme NexT works best with JavaScript enabled</div>
+</noscript>
+
+
+    <div class="main-inner post posts-expand">
+
+
+  
+
+
+<div class="post-block">
+  
+  
+
+  <article itemscope itemtype="http://schema.org/Article" class="post-content" lang="zh-Hans">
+    <link itemprop="mainEntityOfPage" href="https://www.lucius.win/2017/05/24/15%E4%B8%AA%E6%9C%89%E7%94%A8%E7%9A%84-JavaScript-%E5%92%8C-CSS-%E5%BA%93/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Lucius">
+      <meta itemprop="description" content="过去的点点滴滴塑造了现在的自己">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Lucius的笔记本">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          【转】15 个有用的 JavaScript 和 CSS 库
+        </h1>
+
+        <div class="post-meta-container">
+          <div class="post-meta">
+    <span class="post-meta-item">
+      <span class="post-meta-item-icon">
+        <i class="far fa-calendar"></i>
+      </span>
+      <span class="post-meta-item-text">نُشر في</span>
+
+      <time title="أُنشأ: 2017-05-24 16:08:28" itemprop="dateCreated datePublished" datetime="2017-05-24T16:08:28+08:00">2017-05-24</time>
+    </span>
+      <span class="post-meta-item">
+        <span class="post-meta-item-icon">
+          <i class="far fa-calendar-check"></i>
+        </span>
+        <span class="post-meta-item-text">عُدل في</span>
+        <time title="عُدل: 2019-12-04 21:30:24" itemprop="dateModified" datetime="2019-12-04T21:30:24+08:00">2019-12-04</time>
+      </span>
+
+  
+</div>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+        <p>原文：<a target="_blank" rel="noopener" href="https://my.oschina.net/editorial-story/blog/907660">15 个有用的 JavaScript 和 CSS 库</a></p>
+<span id="more"></span>
+
+<p>高质量的网页设计需要直观和用户友好的界面，而且屏幕上的元素也起着非常重要的作用。Web 设计师不断地寻找优秀代码的集合，希望能提升工作效率。但找到合适的工具库并不总是那么容易的。网络上有太多的资源可以使用，而且也是免费的，因此很难判断哪些资源比较好。这就是精心搜索并编写这个最好的库列表的原因。</p>
+<p>无论是希望创建一个视觉上吸引人和功能强大的布局，还是需要在表单和其他区域添加屏幕上的规则和验证，你都会喜欢这个集合。这里列出的库是由具有丰富网页设计经验的专家创建的，这些库不仅是经验丰富的设计师的优秀工具，也是适用于初学者的好工具。这个集合将会帮你节省很多时间，来看一看吧！</p>
+<ol start="0">
+<li>Buefy</li>
+</ol>
+<p>适用于 Vue.js 项目的轻量级 UI 框架，使用流行的基于 flexbox 的 CSS 库 Bulma 构建。它具有典型的 Web APP 所需的全部组件，包括像模态框、吐司和通知这样的动态元素，使开发者可以快速添加任何用户界面到现有的 Vue.js 项目。</p>
+<ol>
+<li>HR.js</li>
+</ol>
+<p>零依赖库，用于在 DOM 中以编程的方式高亮显示并替换字符串，HR.js API 的使用不能再简单了 — 只需使用 CSS 选择器来定位目标文本的父 HTML 元素，选择要突出显示的单词，设置背景颜色，然后就完成了！</p>
+<ol start="2">
+<li>React VR</li>
+</ol>
+<p>React VR 是为 VR 应用而创建的框架，运行在 Web 浏览器中。它将现代 API（例如 WebGL 和 WebVR）与 React 的声明能力结合起来，通过各种设备提供适用于消费者的体验。</p>
+<ol start="3">
+<li>Tippy.js</li>
+</ol>
+<p>轻量的纯 JavaScript 动态提示工具插件库。它提供了大量的不同悬停效果和超过 20 个可定制的选项。Tippy.js 是超级轻量的，并且具有相当不错的浏览器兼容性，当不被支持时会自动回退到常规的 title 属性。</p>
+<ol start="4">
+<li>Barba.js</li>
+</ol>
+<p>没有依赖关系的 JavaScript 库，用于在单页面应用程序的视图之间创建平滑的过渡。该逻辑是围绕PJAX（push state AJAX）构建的，它会检查所有有效的 URL，阻止它们的正常行为，并通过 XMLHttpRequest 加载新页面。Barba 还会确保通过使用 Push State API，使得状态的更改可在页面的 URL 中正确反映出来。</p>
+<ol start="5">
+<li>UIkit</li>
+</ol>
+<p>优秀的 CSS 和 JavaScript 前端框架，包括 SVG 图标字体和几十个组件。无论是外观还是作为一个框架，UIkit 的设计都非常好，它具有统一的样式，易于记忆的 API，许多自定义选项和有用的修饰符类。文档也是写得十分好。</p>
+<ol start="6">
+<li>Haul</li>
+</ol>
+<p>Haul 是用于开发 React Native 应用程序的命令行工具。它可以直接替代 React Native packager，提供更好的 webpack 支持，改进的错误消息，大大减少编译时间。Haul 是可定制和完全开源的，文档也十分优秀。</p>
+<ol start="7">
+<li>AcrossTabs</li>
+</ol>
+<p>用于在浏览器选项卡之间进行通信的 JavaScript 库，使一个网页可以打开和关闭其他浏览器选项卡。父选项卡可以访问有关其子选项卡的有用信息，包括唯一的 ID 以及子选项卡是否仍然打开或已关闭。</p>
+<ol start="8">
+<li>Stylelint</li>
+</ol>
+<p>Stylelint 是一款现代化的 CSS linter，可帮助团队在样式表中强制使用客观的 CSS 标准。该库非常强大，可以禁用或列出特定属性，捕获错误和识别 SCSS 语法。StyleLint 是完全可定制的，可以选择添加新规则或移除你不认可的规则。</p>
+<ol start="9">
+<li>Iconate</li>
+</ol>
+<p>优秀的 vanilla JavaScript 库，可让你将点击中的一个图标转换为另一个图标，并具有各种平滑的动画。Iconate 与所有 CSS 图标字体一起使用 — 只需在 HTML 中添加一个图标，并使用简单的 JavaScript API 来选择将其转换为哪一种，有 15 种以上的动画可供选择。</p>
+<ol start="10">
+<li>React-Datasheet</li>
+</ol>
+<p>React 组件用于向应用添加功能齐全的类 Excel 数据表格。表格单元可以自由编辑、分组选择、复制、粘贴、删除，以及你期望的其他任何功能。其 GitHub 主页上有三个有用的例子 —— 一个基本的表格、带有公式的 spreadsheet，以及带有嵌套组件的表格。</p>
+<ol start="11">
+<li>Pure CSS</li>
+</ol>
+<p>模块化 CSS 框架，体积十分小，压缩后整个库只有 3.8kb，还可以通过移除一些不需要的部分进一步减小大小。模块包括基本的样式集，响应式网格，表单组件，按钮，表格和菜单。</p>
+<ol start="12">
+<li>Simple Icons</li>
+</ol>
+<p>收集了大量社交网络、app、服务和其他品牌的免费图标。因为所有的图标都是使用 SVG 制作的，所以它们可以缩放到任何的尺寸而不用担心变模糊。基于 SVG 还使得它们非常轻量 — 大多数低于 500 bytes，具有更多细节的大约为 1、2KB。</p>
+<ol start="13">
+<li>Chroma.js</li>
+</ol>
+<p>用于处理颜色的小巧的 JavaScript 库。它提供了丰富的 API，具有超过 50 种操作颜色的功能，可在颜色模式之间切换改变亮度和饱和度，创建渐变梯度等许多有用的方法。</p>
+<ol start="14">
+<li>Weex</li>
+</ol>
+<p>Weex 是构建跨平台移动应用的框架，类似于 React Native，但适用于 Vue.js 项目。它可以让你使用 HTML，CSS 和 JavaScript 编写应用，然后在 Android 中将其渲染成 Java 或在 iOS 中将其渲染成 Swift。该框架有许多内置组件、API 和其他有用的功能。</p>
+<p>来源：DzineShip<br>原文链接：<a target="_blank" rel="noopener" href="https://my.oschina.net/editorial-story/blog/907660">https://my.oschina.net/editorial-story/blog/907660</a><br>责任编辑：开源中国 – 局长<br>转载必须在正文中标注并保留原文链接和作者等信息</p>
+
+    </div>
+
+    
+    
+    
+
+    <footer class="post-footer">
+          
+
+<div class="post-copyright">
+<ul>
+  <li class="post-copyright-author">
+      <strong>مؤلف المقال:  </strong>Lucius
+  </li>
+  <li class="post-copyright-link">
+      <strong>رابط المقال: </strong>
+      <a href="https://www.lucius.win/2017/05/24/15%E4%B8%AA%E6%9C%89%E7%94%A8%E7%9A%84-JavaScript-%E5%92%8C-CSS-%E5%BA%93/" title="【转】15 个有用的 JavaScript 和 CSS 库">https://www.lucius.win/2017/05/24/15个有用的-JavaScript-和-CSS-库/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>حقوق الملكية:  </strong>حميع المقالات في هذه المدوّنة منشورة تحت رخصة <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/deed.zh" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> إلا عند التنويه بخلافه.
+  </li>
+</ul>
+</div>
+
+
+        
+
+          <div class="post-nav">
+            <div class="post-nav-item">
+                <a href="/2017/05/24/CSS3%E5%8A%A8%E7%94%BB%E5%9F%BA%E7%A1%80/" rel="prev" title="CSS3动画基础">
+                  <i class="fa fa-chevron-left"></i> CSS3动画基础
+                </a>
+            </div>
+            <div class="post-nav-item">
+                <a href="/2017/07/06/CSS%E8%87%AA%E5%AE%9A%E4%B9%89%E5%B1%9E%E6%80%A7/" rel="next" title="CSS自定义属性">
+                  CSS自定义属性 <i class="fa fa-chevron-right"></i>
+                </a>
+            </div>
+          </div>
+    </footer>
+  </article>
+</div>
+
+
+
+
+
+
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      const activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      const commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+</div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-inner">
+
+
+<div class="copyright">
+  &copy; 
+  <span itemprop="copyrightYear">2021</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Lucius</span>
+</div>
+  <div class="powered-by">تطبيق الموقع <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://theme-next.js.org/" class="theme-link" rel="noopener" target="_blank">NexT.Gemini</a>
+  </div>
+
+    </div>
+  </footer>
+
+  
+  <script src="https://cdn.jsdelivr.net/npm/animejs@3.2.1/lib/anime.min.js"></script>
+<script src="/js/utils.js"></script><script src="/js/motion.js"></script><script src="/js/next-boot.js"></script>
+
+  
+
+
+
+
+
+
+  
+
+
+
+
+
+</body>
+</html>
